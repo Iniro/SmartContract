@@ -26,11 +26,11 @@ function ownerOf(uint256 tokenId) public view override returns (address) {
         return OwnerOfToken[tokenId];
 }
 
-function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes memory ) override public {
+function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes memory data) override public {
     require((_to != address(0)) && (_tokenId != 0));
         if ((ownerOf(_tokenId) == _from) || (_from == TokenApproval)){
             if (isContract(_to)) {
-                require(IERC721TokenReceiver(_to).onERC721Received.selector == IERC721TokenReceiver(_to).onERC721Received(msg.sender, _from, _tokenId, ""));
+                require(IERC721TokenReceiver(_to).onERC721Received.selector == IERC721TokenReceiver(_to).onERC721Received(msg.sender, _from, _tokenId, data));
             }
             OwnerOfToken[_tokenId] = _to;
             AmountOfOwner[_from] -= 1;
@@ -58,6 +58,7 @@ function transferFrom(address _from, address _to, uint256 _tokenId) override pub
 
 function approve(address _approved, uint256 _tokenId) override public {
     require(_tokenId != 0);
+    TokenApproval = _approved;
     emit Approval(ownerOf(_tokenId), _approved, _tokenId);
 }
 
