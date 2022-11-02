@@ -1,0 +1,2 @@
+- name: Reginald - A pull-request review bot
+  uses: alephao/Reginald@v0.1.0
