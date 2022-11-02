@@ -14,4 +14,4 @@ jobs:
     steps:
     - uses: alephao/reginald@develop
       with:
-        repo-token: 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
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
