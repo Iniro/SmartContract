@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
-sdfsdfsdf
 import "../interfaces/IERC721.sol";
 import "../interfaces/IERC721TokenReceiver.sol";
 import "../interfaces/IERC165.sol";
